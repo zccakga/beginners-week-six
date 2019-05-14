@@ -5,27 +5,34 @@ console.log('hello!')
 var backgrounds = ['mike-yukhtenko', 'gabriele-garanzelli', 'fabian-oelkers']
 
 // Only fires logic after the page has fully loaded
-$( document ).ready(function(){
+$( document ).ready(function(){ // when document is ready jquery calls this function
+  // and then when the button is clicked the next function is performed
 
 
   // when the button is clicked it triggers a function
   $('h1').on('click', function () {
 
     // 1. log to the console that you have clicked the button
+    console.log('clicked')
 
     // this selects a randon background from above and stores it as the variable 'randomBackground'
     var randomBackground = backgrounds[Math.floor(Math.random() * backgrounds.length)];
     // this creates a string that css will understand to be a background url
-    var imageUrl = "url('./images/" + randomBackground + ".jpg')"
-    
-    
+    var imageUrl = "url('./images/" + randomBackground + ".jpg') no-repeat center"
+
+    $('body').css('background', imageUrl)
+
+
     // 2. using jquery, change the image url of the body background to the new one saved above
 
     // EXTENSION TASK!
     // 3. Change the text of the 'span' to be that of the photographer
     //   (hint, you should re-use randomBackgroun)
     // Double points if you replace '-' between their names with a space
+    console.log(randomBackground);
+    var niceName = randomBackground.replace(/-/g," ")
+    $("span.photographer").text(niceName)
 
-    
-  }) 
+
+  })
 }) // here endeth the function
